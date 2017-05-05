@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <customer id="1" customerName="Tagpad" phone="380-(830)476-4239" email="tstearley0@harvard.edu"/>
+  <customer id="2" customerName="Aimbu" phone="86-(697)913-8246" email="bkiddey1@ehow.com"/>
+  <customer id="3" customerName="Bluejam" phone="63-(382)797-1061" email="ateck2@live.com"/>
+  <customer id="4" customerName="Avavee" phone="55-(324)126-9701" email="amcgilmartin3@devhub.com"/>
+  <customer id="5" customerName="Vidoo" phone="86-(721)397-3330" email="chourihan4@google.com.au"/>
+  <customer id="6" customerName="Vinder" phone="86-(251)123-5668" email="pdunbleton5@accuweather.com"/>
+  <customer id="7" customerName="Eadel" phone="86-(612)822-7124" email="tblader6@nationalgeographic.com"/>
+  <customer id="8" customerName="Pixonyx" phone="1-(619)515-1134" email="jbrugger7@istockphoto.com"/>
+  <customer id="9" customerName="Jaxworks" phone="7-(169)129-5070" email="wbrandom8@boston.com"/>
+  <customer id="10" customerName="Gabcube" phone="62-(291)884-5204" email="sfowlestone9@senate.gov"/>
+  <customer id="11" customerName="Camimbo" phone="62-(817)101-0991" email="khearsta@walmart.com"/>
+  <customer id="12" customerName="Eazzy" phone="351-(853)521-4198" email="jcastanoneb@mayoclinic.com"/>
+  <customer id="13" customerName="Mynte" phone="374-(902)751-1983" email="ikuschkec@nbcnews.com"/>
+  <customer id="14" customerName="Shuffledrive" phone="62-(736)452-4519" email="chourstond@businessweek.com"/>
+  <customer id="15" customerName="Voonyx" phone="92-(819)968-0425" email="jdeleone@dagondesign.com"/>
+  <customer id="16" customerName="Tavu" phone="7-(976)932-6005" email="nholliarf@youtu.be"/>
+  <customer id="17" customerName="Youspan" phone="81-(650)264-6463" email="wtrevenug@ifeng.com"/>
+  <customer id="18" customerName="Mynte" phone="374-(224)474-7855" email="kbauldreyh@meetup.com"/>
+  <customer id="19" customerName="Tanoodle" phone="353-(348)161-2290" email="missetti@163.com"/>
+  <customer id="20" customerName="Youfeed" phone="33-(769)619-1611" email="edegoeyj@imdb.com"/>
+</dataset>
