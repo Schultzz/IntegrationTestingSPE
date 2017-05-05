@@ -1,50 +1,38 @@
-# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm
-# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+# A general .gitignore for Gradle built Java projects that
+# may use IntelliJ or Eclipse as an IDE.
 
-# User-specific stuff:
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/dictionaries
+# built application files for Android development
+*.apk
+*.ap_
 
-# Sensitive or high-churn files:
-.idea/**/dataSources/
-.idea/**/dataSources.ids
-.idea/**/dataSources.xml
-.idea/**/dataSources.local.xml
-.idea/**/sqlDataSources.xml
-.idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
+# Ignition Module files
+*.modl
 
-# Gradle:
-.idea/**/gradle.xml
-.idea/**/libraries
+# files for the dex VM
+*.dex
 
-# CMake
-cmake-build-debug/
+# Ignore Java class files
+*.class
 
-# Mongo Explorer plugin:
-.idea/**/mongoSettings.xml
+# Gradle generated files
+bin/
+gen/
 
-## File-based project format:
+# Local configuration file used for proj. specific settings (sdk paths, etc)
+local.properties
+
+# Ignore Eclipse project files
+.classpath
+.project
+
+# Ignore Intellij project files and idea directory
+.idea/
+*.iml
+*.ipr
 *.iws
 
-## Plugin-specific files:
-
-# IntelliJ
-/out/
-
-# mpeltonen/sbt-idea plugin
-.idea_modules/
-
-# JIRA plugin
-atlassian-ide-plugin.xml
-
-# Cursive Clojure plugin
-.idea/replstate.xml
-
-# Crashlytics plugin (for Android Studio and IntelliJ)
-com_crashlytics_export_strings.xml
-crashlytics.properties
-crashlytics-build.properties
-fabric.properties
-
+# Gradle related files and caches
+.gradletasknamecache
+.gradle/
+build/
+bin/
