@@ -6,31 +6,31 @@ import entities.Customer;
 import interfaces.IConnector;
 import mappers.CustomerMapper;
 import org.dbunit.Assertion;
+import org.dbunit.database.DatabaseConfig;
 import org.dbunit.database.DatabaseConnection;
 import org.dbunit.database.IDatabaseConnection;
 import org.dbunit.database.QueryDataSet;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.ITable;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
+import org.dbunit.ext.mysql.MySqlMetadataHandler;
 import org.dbunit.operation.DatabaseOperation;
 
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.FileInputStream;
 import java.sql.Connection;
 
-/**
- * Created by ms on 04-05-17.
- */
 public class DBUnitTest {
 
-    private IConnector connector;
-    private CustomerMapper customerMapper;
+    private static IConnector connector;
+    private static MysqlDataSource dataSource;
+    private static CustomerMapper customerMapper;
     private QueryDataSet databaseDataSet;
     private Connection connection;
-    private MysqlDataSource dataSource;
     private IDatabaseConnection dbConnection;
     private ITable xmlTable, databaseTable;
     private IDataSet xmlDataSet;
@@ -39,8 +39,8 @@ public class DBUnitTest {
 
     }
 
-    @Before
-    public void setUp() throws Exception {
+    @BeforeClass
+    public static void setUp() throws Exception {
 
         dataSource = new MysqlDataSource();
         dataSource.setURL("jdbc:mysql://localhost:3306/shoptest");
@@ -51,20 +51,24 @@ public class DBUnitTest {
 
         connector = new MySQLConnector(dataSource);
         customerMapper = new CustomerMapper(connector);
+    }
 
+    @Before
+    public void beforeEach() {
+        System.out.println("In here");
         try {
             connection = dataSource.getConnection();
+
             dbConnection = new DatabaseConnection(connection, "shoptest");
+            dbConnection.getConfig().setProperty(DatabaseConfig.PROPERTY_METADATA_HANDLER, new MySqlMetadataHandler());
             xmlDataSet = new FlatXmlDataSetBuilder().build(new FileInputStream("partial.xml"));
-            DatabaseOperation.REFRESH.execute(dbConnection, xmlDataSet);
+            DatabaseOperation.TRUNCATE_TABLE.execute(dbConnection, xmlDataSet);
+            DatabaseOperation.CLEAN_INSERT.execute(dbConnection, xmlDataSet);
         } catch (Exception e) {
             System.out.println("exception " + e);
-        } finally {
-
-            //cause the connection to close to early.
-            //dbConnection.close();
         }
     }
+
 
     @Test
     public void getAllUsers_allValuesGiven_returns20Rows() {
@@ -86,14 +90,14 @@ public class DBUnitTest {
     @Test
     public void createNewCustomer_allValuesGiven_returns21Rows() {
 
-        customerMapper.createCustomer(new Customer("test", "222", "email@emila.dk"));
+        customerMapper.createCustomer(new Customer("test", "123456789", "test@test.dk"));
 
         databaseDataSet = new QueryDataSet(dbConnection);
         try {
             databaseDataSet.addTable("customer");
             databaseTable = databaseDataSet.getTable("customer");
 
-            xmlDataSet = new FlatXmlDataSetBuilder().build(new FileInputStream("partial.xml"));
+            xmlDataSet = new FlatXmlDataSetBuilder().build(new FileInputStream("partial_insert.xml"));
             xmlTable = xmlDataSet.getTable("customer");
 
             Assertion.assertEquals(xmlTable, databaseTable);
@@ -121,6 +125,5 @@ public class DBUnitTest {
             e.printStackTrace();
         }
     }
-
 
 }
